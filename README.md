@@ -1,7 +1,7 @@
 Easy regions (where variant calls tend to be accurate in most samples):
 
-* [ENCODE][encode]: ENCODE blacklist regions v2, published in [Amemiya et al (2019)][pub-encode]
 * [umap-k100][umap]: Umap for 100bp single-end reads, published in [Karimzadeh et al (2018)][pub-umap]
+* [ENCODE][encode]: ENCODE blacklist regions v2, published in [Amemiya et al (2019)][pub-encode]
 * [GIAB-easy][GIAB-easy]: GIAB genome stratification v3.5, published in [Dwarshuis et al (2024)][pub-GIAB-easy]
 
 [GIAB-easy]: https://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/genome-stratifications/v3.5/GRCh38@all/Union/
@@ -14,10 +14,18 @@ Easy regions (where variant calls tend to be accurate in most samples):
 HG002 confident regions (where small variant calls can be trusted):
 
 * [HG002-GIAB][GIAB-old]: NIST confident regions, v4.2.1
-* [HG002-Q100][GIAB-new]: T2TQ100 v1.1
+* [HG002-Q100][GIAB-new]: T2TQ100 v1.1/20241113
 
 [GIAB-old]: https://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/AshkenazimTrio/HG002_NA24385_son/NISTv4.2.1/GRCh38/
 [GIAB-new]: https://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/data/AshkenazimTrio/analysis/NIST_HG002_DraftBenchmark_defrabbV0.019-20241113/
+
+Other datasets used for evaluation:
+
+* ClinVar, [20250209][clinvar-dw]
+* GenCode basic gene annotation, [v47][gencode-gtp]
+
+[clinvar-dw]: https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/archive_2.0/2025/
+[gencode-gtp]: https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_47/
 
 <!--
 |                    |GIAB-easy| ENCODE  |umap-k100| pm151   | pm151a  |HG002-Q100|HG002-GIAB|
@@ -35,7 +43,4 @@ HG002 confident regions (where small variant calls can be trusted):
 
 * % gnomAD SNP20 pass: percent PASS SNPs at 20% allele frequency in gnomAD are included in the confident regions
 * % gnomAD SNP20 flt: percent filtered SNPs at 20% allele frequency in gnomAD are included in the confident regions
-* ClinVar version: 20250209
-* GenCode version: v47
-* Q100 version: 20241113
 -->
