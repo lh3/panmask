@@ -1,3 +1,5 @@
+## Datasets
+
 Easy regions (where variant calls tend to be accurate in most samples):
 
 * [umap-k100][umap]: Umap for 100bp single-end reads, published in [Karimzadeh et al (2018)][pub-umap]
@@ -27,8 +29,8 @@ Other datasets used for evaluation:
 [clinvar-dw]: https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/archive_2.0/2025/
 [gencode-gtp]: https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_47/
 
-Short-read small [variant calls][varcall], published in [Baid et al (2020)][pub-varcall].
-Only VCFs made from HG002 PCR-free NovaSeq data at 50X are used.
+Short-read [small variant calls][varcall], published in [Baid et al (2020)][pub-varcall].
+Only VCFs called from HG002 PCR-free NovaSeq data at 50X are used.
 
 [varcall]: https://console.cloud.google.com/storage/browser/brain-genomics-public/research/sequencing/grch38/vcf/novaseq/wgs_pcr_free/50x
 [pub-varcall]: https://www.biorxiv.org/content/10.1101/2020.12.11.422022v1
