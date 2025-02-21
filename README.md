@@ -1,6 +1,16 @@
-## Datasets
+## Introduction
 
-Easy regions (where variant calls tend to be accurate in most samples):
+Panmask provides a list of easy/hard regions for short-read variant calling against the human genome GRCh38.
+The easy regions harbor small variants that are easy to call, with most variant callers achieving 98-99.5% accuracy in the regions.
+They cover 88.7% of GRCh38, 92.0% of coding regions and 95.1% of pathogenic variants in ClinVar.
+The panmask regions may help to reduce variant calling artifacts and simplify variant filtering.
+They can be downloaded [from Zenodo][zenodo].
+
+[zenodo]: https://zenodo.org/records/14903542
+
+## Other Datasets
+
+GRCh38 easy regions (where variant calls tend to be accurate in most samples):
 
 * [umap-k100][umap]: Umap for 100bp single-end reads, published in [Karimzadeh et al (2018)][pub-umap]
 * [ENCODE][encode]: ENCODE blacklist regions v2, published in [Amemiya et al (2019)][pub-encode]
@@ -44,11 +54,4 @@ Only VCFs called from HG002 PCR-free NovaSeq data at 50X are used.
 |% GRCh38            |79.0     |96.8     |96.7     |87.2     |88.7     |93.7      |87.0      |
 |% GenCode CDS       |72.6     |98.5     |97.6     |92.0     |92.3     |95.8      |91.8      |
 |% ClinVar patho     |77.4     |99.8     |99.6     |95.1     |95.8     |98.8      |90.2      |
--->
-<!--
-|% gnomAD SNP20 pass| 89.8        | 78.2    | 99.6       |
-|% gnomAD SNP20 flt | 26.8        | 7.1     | 86.5       |
-
-* % gnomAD SNP20 pass: percent PASS SNPs at 20% allele frequency in gnomAD are included in the confident regions
-* % gnomAD SNP20 flt: percent filtered SNPs at 20% allele frequency in gnomAD are included in the confident regions
 -->
