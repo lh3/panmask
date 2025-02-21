@@ -33,10 +33,10 @@ set ylab "INDEL %FDR" off -.5
 set border 3
 unset xtics
 plot \
-	"<grep DeepVariant 12eval.txt" u 7:xtic(4) t "DeepVariant", \
-	"<grep Streka 12eval.txt"      u 7:xtic(4) t "Streka2", \
-	"<grep Octopus 12eval.txt"     u 7:xtic(4) t "Octopus", \
-	"<grep GATK 12eval.txt"        u 7:xtic(4) t "GATK4"
+	"<grep DeepVariant 12eval.txt | grep -v noconf" u 7:xtic(4) t "DeepVariant", \
+	"<grep Streka 12eval.txt | grep -v noconf"      u 7:xtic(4) t "Streka2", \
+	"<grep Octopus 12eval.txt | grep -v noconf"     u 7:xtic(4) t "Octopus", \
+	"<grep GATK 12eval.txt | grep -v noconf"        u 7:xtic(4) t "GATK4"
 
 unset label
 
@@ -50,7 +50,7 @@ set tmargin 0
 set bmargin
 set border 2
 plot \
-	"<grep DeepVariant 12eval.txt" u 8:xtic(4) not, \
-	"<grep Streka 12eval.txt"      u 8:xtic(4) not, \
-	"<grep Octopus 12eval.txt"     u 8:xtic(4) not, \
-	"<grep GATK 12eval.txt"        u 8:xtic(4) not
+	"<grep DeepVariant 12eval.txt | grep -v noconf" u 8:xtic(4) not, \
+	"<grep Streka 12eval.txt | grep -v noconf"      u 8:xtic(4) not, \
+	"<grep Octopus 12eval.txt | grep -v noconf"     u 8:xtic(4) not, \
+	"<grep GATK 12eval.txt | grep -v noconf"        u 8:xtic(4) not
