@@ -36,7 +36,8 @@ plot \
 	"<grep DeepVariant 12eval.txt | grep -v noconf" u 5:xtic(4) t "DeepVariant", \
 	"<grep Streka 12eval.txt | grep -v noconf"      u 5:xtic(4) t "Streka2", \
 	"<grep Octopus 12eval.txt | grep -v noconf"     u 5:xtic(4) t "Octopus", \
-	"<grep GATK 12eval.txt | grep -v noconf"        u 5:xtic(4) t "GATK4"
+	"<grep GATK 12eval.txt | grep -v noconf"        u 5:xtic(4) t "GATK4", \
+	"<grep pileup 12eval.txt | grep -v noconf"      u 5:xtic(4) t "pileup" ls 5
 
 unset label
 
@@ -53,4 +54,5 @@ plot \
 	"<grep DeepVariant 12eval.txt | grep -v noconf" u 6:xtic(4) not, \
 	"<grep Streka 12eval.txt | grep -v noconf"      u 6:xtic(4) not, \
 	"<grep Octopus 12eval.txt | grep -v noconf"     u 6:xtic(4) not, \
-	"<grep GATK 12eval.txt | grep -v noconf"        u 6:xtic(4) not
+	"<grep GATK 12eval.txt | grep -v noconf"        u 6:xtic(4) not, \
+	"<grep pileup 12eval.txt | grep -v noconf"      u 6:xtic(4) not ls 5

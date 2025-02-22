@@ -34,9 +34,9 @@ set border 3
 unset xtics
 plot \
 	"<grep DeepVariant 12eval.txt | grep -v noconf" u 7:xtic(4) t "DeepVariant", \
-	"<grep Streka 12eval.txt | grep -v noconf"      u 7:xtic(4) t "Streka2", \
-	"<grep Octopus 12eval.txt | grep -v noconf"     u 7:xtic(4) t "Octopus", \
-	"<grep GATK 12eval.txt | grep -v noconf"        u 7:xtic(4) t "GATK4"
+	"<grep Streka 12eval.txt | egrep -v noconf"      u 7:xtic(4) t "Streka2", \
+	"<grep Octopus 12eval.txt | egrep -v noconf"     u 7:xtic(4) t "Octopus", \
+	"<grep GATK 12eval.txt | egrep -v noconf"        u 7:xtic(4) t "GATK4"
 
 unset label
 
