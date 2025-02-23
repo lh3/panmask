@@ -33,10 +33,10 @@ set ylab "SNP %FDR" off +.0
 set border 3
 unset xtics
 plot \
-	"<(grep DeepVariant 12eval*.txt|sort -k2,2n -k1,1n|egrep '4.2.1|Q100|noconf'; grep DeepVariant.*easy 12eval.txt)" u 5:xtic(4) t "DeepVariant", \
-	"<(grep Streka 12eval*.txt|sort -k2,2n -k1,1n|egrep '4.2.1|Q100|noconf'; grep Streka.*easy 12eval.txt)"           u 5:xtic(4) t "Streka2", \
-	"<(grep Octopus 12eval*.txt|sort -k2,2n -k1,1n|egrep '4.2.1|Q100|noconf'; grep Octopus.*easy 12eval.txt)"         u 5:xtic(4) t "Octopus", \
-	"<(grep GATK 12eval*.txt|sort -k2,2n -k1,1n|egrep '4.2.1|Q100|noconf'; grep GATK.*easy 12eval.txt)"               u 5:xtic(4) t "GATK4"
+	"<(grep DeepVariant 12eval.txt|egrep 'HG002-GIAB|Q100|noconf'; grep DeepVariant.*easy2 12eval.txt)" u 5:xtic(4) t "DeepVariant", \
+	"<(grep Streka 12eval.txt|egrep 'HG002-GIAB|Q100|noconf'; grep Streka.*easy2 12eval.txt)"           u 5:xtic(4) t "Streka2", \
+	"<(grep Octopus 12eval.txt|egrep 'HG002-GIAB|Q100|noconf'; grep Octopus.*easy2 12eval.txt)"         u 5:xtic(4) t "Octopus", \
+	"<(grep GATK 12eval.txt|egrep 'HG002-GIAB|Q100|noconf'; grep GATK.*easy2 12eval.txt)"               u 5:xtic(4) t "GATK4"
 
 unset label
 
@@ -50,7 +50,7 @@ set tmargin 0
 set bmargin
 set border 2
 plot \
-	"<(grep DeepVariant 12eval*.txt|sort -k2,2n -k1,1n|egrep '4.2.1|Q100|noconf'; grep DeepVariant.*easy 12eval.txt)" u 6:xtic(4) not, \
-	"<(grep Streka 12eval*.txt|sort -k2,2n -k1,1n|egrep '4.2.1|Q100|noconf'; grep Streka.*easy 12eval.txt)"           u 6:xtic(4) not, \
-	"<(grep Octopus 12eval*.txt|sort -k2,2n -k1,1n|egrep '4.2.1|Q100|noconf'; grep Octopus.*easy 12eval.txt)"         u 6:xtic(4) not, \
-	"<(grep GATK 12eval*.txt|sort -k2,2n -k1,1n|egrep '4.2.1|Q100|noconf'; grep GATK.*easy 12eval.txt)"               u 6:xtic(4) not
+	"<(grep DeepVariant 12eval.txt|egrep 'HG002-GIAB|Q100|noconf'; grep DeepVariant.*easy2 12eval.txt)" u 6:xtic(4) not, \
+	"<(grep Streka 12eval.txt|egrep 'HG002-GIAB|Q100|noconf'; grep Streka.*easy2 12eval.txt)"           u 6:xtic(4) not, \
+	"<(grep Octopus 12eval.txt|egrep 'HG002-GIAB|Q100|noconf'; grep Octopus.*easy2 12eval.txt)"         u 6:xtic(4) not, \
+	"<(grep GATK 12eval.txt|egrep 'HG002-GIAB|Q100|noconf'; grep GATK.*easy2 12eval.txt)"               u 6:xtic(4) not
