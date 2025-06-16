@@ -15,6 +15,8 @@ GRCh38 easy regions (where variant calls tend to be accurate in most samples):
 * [umap-k100][umap]: Umap for 100bp single-end reads, published in [Karimzadeh et al (2018)][pub-umap]
 * [ENCODE][encode]: ENCODE blacklist regions v2, published in [Amemiya et al (2019)][pub-encode]
 * [GIAB-easy][GIAB-easy]: GIAB genome stratification v3.5, published in [Dwarshuis et al (2024)][pub-GIAB-easy]
+* [Illumina][il-t2t]: originally developed [by Illumina][il-ori], reimplemented by Taylor and McCoy from JHU.
+* [1000G mask][1kg]: developed for the 1000 Genomes Project. Developers unknown.
 
 [GIAB-easy]: https://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/genome-stratifications/v3.5/GRCh38@all/Union/
 [pub-GIAB-easy]: https://www.nature.com/articles/s41467-024-53260-y
@@ -22,6 +24,9 @@ GRCh38 easy regions (where variant calls tend to be accurate in most samples):
 [pub-umap]: https://academic.oup.com/nar/article/46/20/e120/5086676?login=false
 [encode]: https://github.com/Boyle-Lab/Blacklist
 [pub-encode]: https://www.nature.com/articles/s41598-019-45839-z
+[il-t2t]: https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/annotation/accessibility/chm13v2.0.short-read_accessibility_mask.html
+[il-ori]: https://www.illumina.com/science/genomics-research/articles/identifying-genomic-regions-with-high-quality-single-nucleotide-.html
+[1kg]: https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000_genomes_project/working/20160622_genome_mask_GRCh38/
 
 HG002 confident regions (where small variant calls can be trusted):
 
