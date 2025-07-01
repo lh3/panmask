@@ -24,35 +24,35 @@ set boxwidth 0.7
 set key top left
 
 # top left
-set origin 0,0.6
+set origin 0,0.63
 set size 1,.45
-set yran [0:7]; set ytics 1
+set yran [0:4]; set ytics 1; set mytics 5
 set lmargin 8
 set bmargin 0
 set ylab "SNP %FDR" off +.0
 set border 3
 unset xtics
 plot \
-	"<grep DeepVariant 12eval.txt | grep -v noconf" u 5:xtic(4) t "DeepVariant", \
-	"<grep Streka 12eval.txt | grep -v noconf"      u 5:xtic(4) t "Streka2", \
-	"<grep Octopus 12eval.txt | grep -v noconf"     u 5:xtic(4) t "Octopus", \
-	"<grep GATK 12eval.txt | grep -v noconf"        u 5:xtic(4) t "GATK4", \
-	"<grep pileup 12eval.txt | grep -v noconf"      u 5:xtic(4) t "pileup" ls 5
+	"<grep DeepVariant 12eval.txt | egrep -v 'All-chr|ENCODE|UMAP'" u 5:xtic(4) t "DeepVariant", \
+	"<grep Streka 12eval.txt | egrep -v 'All-chr|ENCODE|UMAP'"      u 5:xtic(4) t "Streka2", \
+	"<grep Octopus 12eval.txt | egrep -v 'All-chr|ENCODE|UMAP'"     u 5:xtic(4) t "Octopus", \
+	"<grep GATK 12eval.txt | egrep -v 'All-chr|ENCODE|UMAP'"        u 5:xtic(4) t "GATK4", \
+	"<grep Pileup 12eval.txt | egrep -v 'All-chr|ENCODE|UMAP'"      u 5:xtic(4) t "pileup" ls 6
 
 unset label
 
 # bottom left
 set origin 0,0.00
-set size 1,.60
+set size 1,.63
 set xtic rotate by -45 scale 0
 set ylab "SNP %FNR" off +.0
-set yran [7:0]; set ytics 1
+set yran [4:0]; set ytics 1
 set tmargin 0
 set bmargin
 set border 2
 plot \
-	"<grep DeepVariant 12eval.txt | grep -v noconf" u 6:xtic(4) not, \
-	"<grep Streka 12eval.txt | grep -v noconf"      u 6:xtic(4) not, \
-	"<grep Octopus 12eval.txt | grep -v noconf"     u 6:xtic(4) not, \
-	"<grep GATK 12eval.txt | grep -v noconf"        u 6:xtic(4) not, \
-	"<grep pileup 12eval.txt | grep -v noconf"      u 6:xtic(4) not ls 5
+	"<grep DeepVariant 12eval.txt | egrep -v 'All-chr|ENCODE|UMAP'" u 6:xtic(4) not, \
+	"<grep Streka 12eval.txt | egrep -v 'All-chr|ENCODE|UMAP'"      u 6:xtic(4) not, \
+	"<grep Octopus 12eval.txt | egrep -v 'All-chr|ENCODE|UMAP'"     u 6:xtic(4) not, \
+	"<grep GATK 12eval.txt | egrep -v 'All-chr|ENCODE|UMAP'"        u 6:xtic(4) not, \
+	"<grep Pileup 12eval.txt | egrep -v 'All-chr|ENCODE|UMAP'"      u 6:xtic(4) not ls 6

@@ -24,33 +24,35 @@ set boxwidth 0.7
 set key top left
 
 # top left
-set origin 0,0.6
+set origin 0,0.63
 set size 1,.45
-set yran [0:5]; set ytics 1
+set yran [0:3]; set ytics 1
+set mytics 10
 set lmargin 8
 set bmargin 0
 set ylab "INDEL %FDR" off -.5
 set border 3
 unset xtics
 plot \
-	"<grep DeepVariant 12eval.txt | grep -v noconf" u 7:xtic(4) t "DeepVariant", \
-	"<grep Streka 12eval.txt | egrep -v noconf"      u 7:xtic(4) t "Streka2", \
-	"<grep Octopus 12eval.txt | egrep -v noconf"     u 7:xtic(4) t "Octopus", \
-	"<grep GATK 12eval.txt | egrep -v noconf"        u 7:xtic(4) t "GATK4"
+	"<grep DeepVariant 12eval.txt | egrep -v 'All-chr|ENCODE|UMAP'" u 7:xtic(4) not, \
+	"<grep Streka 12eval.txt | egrep -v 'All-chr|ENCODE|UMAP'"      u 7:xtic(4) not, \
+	"<grep Octopus 12eval.txt | egrep -v 'All-chr|ENCODE|UMAP'"     u 7:xtic(4) not, \
+	"<grep GATK 12eval.txt | egrep -v 'All-chr|ENCODE|UMAP'"        u 7:xtic(4) not
 
 unset label
 
 # bottom left
 set origin 0,0.00
-set size 1,.60
+set size 1,.63
 set xtic rotate by -45 scale 0
 set ylab "INDEL %FNR" off +.5
 set yran [14:0]; set ytics 2
+set mytics 2
 set tmargin 0
 set bmargin
 set border 2
 plot \
-	"<grep DeepVariant 12eval.txt | grep -v noconf" u 8:xtic(4) not, \
-	"<grep Streka 12eval.txt | grep -v noconf"      u 8:xtic(4) not, \
-	"<grep Octopus 12eval.txt | grep -v noconf"     u 8:xtic(4) not, \
-	"<grep GATK 12eval.txt | grep -v noconf"        u 8:xtic(4) not
+	"<grep DeepVariant 12eval.txt | egrep -v 'All-chr|ENCODE|UMAP'" u 8:xtic(4) not, \
+	"<grep Streka 12eval.txt | egrep -v 'All-chr|ENCODE|UMAP'"      u 8:xtic(4) not, \
+	"<grep Octopus 12eval.txt | egrep -v 'All-chr|ENCODE|UMAP'"     u 8:xtic(4) not, \
+	"<grep GATK 12eval.txt | egrep -v 'All-chr|ENCODE|UMAP'"        u 8:xtic(4) not

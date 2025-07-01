@@ -24,33 +24,36 @@ set boxwidth 0.7
 set key top left
 
 # top left
-set origin 0,0.6
+set origin 0,0.63
 set size 1,.45
-set yran [0:12]; set ytics 2
+set yran [0:11]; set ytics 2
 set lmargin 8
 set bmargin 0
 set ylab "SNP %FDR" off +.0
 set border 3
+set mytics 4
 unset xtics
 plot \
-	"<(grep DeepVariant 12eval.txt|egrep 'HG002-GIAB|Q100|noconf'; grep DeepVariant.*easy2 12eval.txt)" u 5:xtic(4) t "DeepVariant", \
-	"<(grep Streka 12eval.txt|egrep 'HG002-GIAB|Q100|noconf'; grep Streka.*easy2 12eval.txt)"           u 5:xtic(4) t "Streka2", \
-	"<(grep Octopus 12eval.txt|egrep 'HG002-GIAB|Q100|noconf'; grep Octopus.*easy2 12eval.txt)"         u 5:xtic(4) t "Octopus", \
-	"<(grep GATK 12eval.txt|egrep 'HG002-GIAB|Q100|noconf'; grep GATK.*easy2 12eval.txt)"               u 5:xtic(4) t "GATK4"
+	"<(grep DeepV 12eval.txt|egrep 'HG002|All-chr|ENCODE|UMAP|relaxed|Ill')"   u 5:xtic(4) t "DeepVariant", \
+	"<(grep Stre 12eval.txt|egrep 'HG002|All-chr|ENCODE|UMAP|relaxed|Ill')"    u 5:xtic(4) t "Streka2", \
+	"<(grep Octopus 12eval.txt|egrep 'HG002|All-chr|ENCODE|UMAP|relaxed|Ill')" u 5:xtic(4) t "Octopus", \
+	"<(grep GATK 12eval.txt|egrep 'HG002|All-chr|ENCODE|UMAP|relaxed|Ill')"    u 5:xtic(4) t "GATK4", \
+	"<(grep Pileup 12eval.txt|egrep 'HG002|All-chr|ENCODE|UMAP|relaxed|Ill')"  u 5:xtic(4) t "pileup" ls 6
 
 unset label
 
 # bottom left
 set origin 0,0.00
-set size 1,.60
+set size 1,.63
 set xtic rotate by -45 scale 0
 set ylab "SNP %FNR" off +.0
-set yran [12:0]; set ytics 2
+set yran [11:0]; set ytics 2
 set tmargin 0
 set bmargin
 set border 2
 plot \
-	"<(grep DeepVariant 12eval.txt|egrep 'HG002-GIAB|Q100|noconf'; grep DeepVariant.*easy2 12eval.txt)" u 6:xtic(4) not, \
-	"<(grep Streka 12eval.txt|egrep 'HG002-GIAB|Q100|noconf'; grep Streka.*easy2 12eval.txt)"           u 6:xtic(4) not, \
-	"<(grep Octopus 12eval.txt|egrep 'HG002-GIAB|Q100|noconf'; grep Octopus.*easy2 12eval.txt)"         u 6:xtic(4) not, \
-	"<(grep GATK 12eval.txt|egrep 'HG002-GIAB|Q100|noconf'; grep GATK.*easy2 12eval.txt)"               u 6:xtic(4) not
+	"<(grep DeepV 12eval.txt|egrep 'HG002|All-chr|ENCODE|UMAP|relaxed|Ill')"   u 6:xtic(4) not, \
+	"<(grep Stre 12eval.txt|egrep 'HG002|All-chr|ENCODE|UMAP|relaxed|Ill')"    u 6:xtic(4) not, \
+	"<(grep Octopus 12eval.txt|egrep 'HG002|All-chr|ENCODE|UMAP|relaxed|Ill')" u 6:xtic(4) not, \
+	"<(grep GATK 12eval.txt|egrep 'HG002|All-chr|ENCODE|UMAP|relaxed|Ill')"    u 6:xtic(4) not, \
+	"<(grep Pileup 12eval.txt|egrep 'HG002|All-chr|ENCODE|UMAP|relaxed|Ill')"  u 6:xtic(4) not ls 6

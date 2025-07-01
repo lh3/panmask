@@ -21,6 +21,6 @@ set lmargin 8
 #set bmargin
 set border 2
 plot \
-	"13cov.txt" u (100-$2):xtic(1) t "GRCh38 non-gap", \
-	""          u (100-$3):xtic(1) t "GenCode CDS", \
-	""          u (100-$4):xtic(1) t "ClinVar pathogenic"
+	"13cov.txt" u (100-$2/2923717335*100):xtic(1) t "GRCh38 non-gap", \
+	""          u (100-$3/33797803*100):xtic(1) t "GenCode CDS", \
+	""          u (100-$4/308259*100):xtic(1) t "ClinVar pathogenic"
