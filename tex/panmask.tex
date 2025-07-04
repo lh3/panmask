@@ -19,7 +19,7 @@
 \appnotes{Preprint}
 \firstpage{1}
 
-\title[Easy regions for short-read variant calling]{Deriving easy regions for short-read variant calling from pangenome data}
+\title[Easy regions for short-read variant calling]{Finding easy regions for short-read variant calling from pangenome data}
 \author[1,2,3,$\ast$]{Heng Li\ORCID{0000-0003-4874-2874}}
 \address[1]{Department of Biomedical Informatics, Harvard Medical School, 10 Shattuck St, Boston, MA 02215, USA}
 \address[2]{Department of Data Science, Dana-Farber Cancer Institute, 450 Brookline Ave, Boston, MA 02215, USA}
@@ -32,19 +32,27 @@
 
 \abstract{
 \sffamily\footnotesize
-\textbf{Summary:}
-While benchmarks on short-read variant calling suggest low error rate below 1\%,
+\textbf{Background:}
+While benchmarks on short-read variant calling suggest low error rate below 0.5\%,
 they are only applicable to predefined confident regions.
 For a human sample without such regions, the error rate could be 10 times higher.
-Here, using hundreds of high-quality human assemblies,
-we derived a set of sample-agnostic easy regions where short-read variant calling is expected to reach high accuracy.
-These regions cover 87.9\% of GRCh38, 92.7\% of coding regions and 96.4\% of ClinVar pathogenic variants.
-Compared to similar efforts, our easy regions achieve a good balance between coverage and easiness.
-They are also more straightforward to derive with modern data.
+Although multiple sets of easy regions have been identified to alleviate the issue,
+they fail to consider non-reference samples or are biased towards existing short-read data or aligners.
 \vspace{0.5em}\\
-\textbf{Availability and implementation:}
-Resultant easy regions can be downloaded from \url{10.5281/zenodo.14903542}; scripts for generating the easy regions
-are available at \url{https://github.com/lh3/panmask}.
+\textbf{Results:}
+Here, using hundreds of high-quality human assemblies,
+we derived a set of sample-agnostic easy regions where short-read variant calling reaches high accuracy.
+These regions cover 87.9\% of GRCh38, 92.7\% of coding regions and 96.4\% of ClinVar pathogenic variants.
+They achieve a good balance between coverage and easiness and can be generated for other human assemblies or species with multiple well assembled genomes.
+\vspace{0.5em}\\
+\textbf{Conclusion:}
+This resource provides a convient and powerful way to filter spurious variant calls for clinical or research human samples.
+\vspace{0.5em}\\
+\textbf{Keywords:}
+variant calling; pangenome; assembly
+%\textbf{Availability and implementation:}
+%Easy regions can be downloaded from \url{https://doi.org/10.5281/zenodo.14903542}; scripts for generating the easy regions
+%are available at \url{https://github.com/lh3/panmask}.
 }
 
 \maketitle
@@ -139,7 +147,7 @@ As SNP and indel calling errors are enriched in low-complexity regions (LCRs; \c
 we further exclude such regions longer than 18bp with the SDUST algorithm~\citep{Morgulis:2006aa}.
 This results in {\sf pm151:strict} easy regions which are a strict subset of {\sf pm151:relaxed}.
 
-\section{Results and Discussions}
+\section{Results}
 
 We collected the following easy regions:
 updated {\sf 1KG}~\citep{1000-Genomes-Project-Consortium:2010qc},
@@ -154,7 +162,7 @@ and {\sf HG002-Q100} from GIAB's new Q100 benchmark v1.1.
 
 \begin{figure}[tb]
 \centering
-\includegraphics[width=0.9\columnwidth]{../plot/cov-dense.pdf}
+\includegraphics[width=0.9\columnwidth]{cov-dense.pdf}
 \caption{Properties of easy and confident regions.
 {\bf (a)} Coverage on GRCh38 chromosomal sequences.
 CDS coverage is measured with MANE-selected protein coding genes from GenCode v48.
@@ -200,7 +208,7 @@ and even when Q100 calls are wrong, their consistency with short-read calls
 still reflects the ``easiness'' of easy regions.
 
 \begin{figure*}[tb]
-\includegraphics[width=\textwidth]{../plot/merge.pdf}
+\includegraphics[width=\textwidth]{merge.pdf}
 \caption{Small variant calling accuracy in easy and confident regions.
 {\bf (a)} SNP accuracy.
 DeepVariant, Strelka2, Octopus and GATK short-read variant calls from 30X NovaSeq data were obtained from \citet{Baid2020.12.11.422022}.
@@ -229,17 +237,21 @@ Excluding long LCRs,
 pm151:strict greatly reduces SNP and indel calling errors in comparison to pm151:relaxed
 and achieves a reasonable balance between coverage and easiness.
 
+\section{Discussions}
+
+The pm151 easy regions are used for filtering spurious variant calls in centromeres, long repeats,
+or other genomic regions where short-read mapping is likely problematic.
+These easy regions are not biased towards existing short-read data or aligners in use.
+They can be generated in two days for an arbitrary human assembly on a server with 64 CPU threads.
+The procedure can also be applied to a species with multiple well assembled genomes.
+
 Overall, no easy region set is better than the others on all metrics.
 Nevertheless, for the purpose of variant filtering,
-we do not recommend GIAB:strict and Ilmn-easy as they miss $>$20\% of CDS;
+we do not recommend GIAB:strict and Ilmn-easy as they miss $\sim$20\% of CDS and ClinVar pathogenic variants;
 we discourage the use of ENCODE and Umap100 as they are too permissive
 and are not effective for variant filtering.
-1KG and pm151 are the better choices for GRCh38.
-For a new reference genome such as T2T-CHM13, generating 1KG-like easy regions requires the alignment of thousands of human samples and is thus computationally intensive.
-pm151 will be a more convenient option.
-It is also less biased towards existing short-read data or aligners.
-Furthermore, our approach is applicable to an arbitrary human assembly or to species with multiple well assembled samples.
-We hope the concept of easy regions to be more widely adopted.
+1KG and pm151 are the better choices
+though the 1KG set is only available to GRCh38.
 
 \section*{Acknowledgments}
 
@@ -265,7 +277,7 @@ This work is supported by National Institute of Health grant R01HG010040, U01HG0
 
 \section*{Data availability}
 
-pm151 easy regions can be downloaded from \url{10.5281/zenodo.14903542}. Scripts to generate easy regions are available at \url{https://github.com/lh3/panmask}.
+pm151 easy regions can be downloaded from \url{https://doi.org/10.5281/zenodo.14903542}. Scripts to generate easy regions are available at \url{https://github.com/lh3/panmask}.
 
 \bibliographystyle{apalike}
 {\sffamily\small
