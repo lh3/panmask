@@ -24,7 +24,7 @@ GRCh38 easy regions (where variant calls tend to be accurate in most samples):
 [pub-umap]: https://academic.oup.com/nar/article/46/20/e120/5086676?login=false
 [encode]: https://github.com/Boyle-Lab/Blacklist
 [pub-encode]: https://www.nature.com/articles/s41598-019-45839-z
-[il-t2t]: https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/annotation/accessibility/chm13v2.0.short-read_accessibility_mask.html
+[il-t2t]: https://s3-us-west-2.amazonaws.com/human-pangenomics/index.html?prefix=T2T/CHM13/assemblies/annotation/accessibility/
 [il-ori]: https://www.illumina.com/science/genomics-research/articles/identifying-genomic-regions-with-high-quality-single-nucleotide-.html
 [1kg]: https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000_genomes_project/working/20160622_genome_mask_GRCh38/
 
@@ -45,7 +45,8 @@ Other datasets used for evaluation:
 [gencode-gtp]: https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_47/
 
 Short-read [small variant calls][varcall], published in [Baid et al (2020)][pub-varcall].
-Only VCFs called from HG002 PCR-free NovaSeq data at 50X are used.
+Only VCFs called from HG002 PCR-free NovaSeq data at 30X are used.
+Data files in this repo are under CC0.
 
 [varcall]: https://console.cloud.google.com/storage/browser/brain-genomics-public/research/sequencing/grch38/vcf/novaseq/wgs_pcr_free/50x
 [pub-varcall]: https://www.biorxiv.org/content/10.1101/2020.12.11.422022v1
