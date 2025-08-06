@@ -98,11 +98,10 @@ However, they would overlook regions unique in the reference genome but duplicat
 The second class of methods solve this problem by taking non-reference samples into account.
 We inspect the read alignment of multiple samples and exclude regions of excessively high or low coverage or enriched with alignments of low mapping quality.
 The 1000 Genomes Project (1KG) was the first to use such an approach~\citep{1000-Genomes-Project-Consortium:2010qc}.
-Illumina posted an article in 2021 with a similar method, though not citing 1KG.
+Illumina posted an article in 2021 with a similar method but not citing 1KG.
 \citet{Aganezov:2022aa} reproduced these regions for T2T-CHM13~\citep{Nurk:2022up}.
+\citet{Pan:2022aa} went a step further by using multiple aligners and variant callers.
 ENCODE blacklist~\citep{Amemiya:2019aa} considered empirical read alignment as well.
-%It is also possible to combine the two classes of methods.
-%We did that for the Simons Genomes Diversity Project~\citep{Mallick:2016aa}.
 \citet{Mandelker:2016aa} defined problematic regions for GRCh37 exome which were often used in clinical testing.
 Methods in this class implicitly model biases in input reads and alignment algorithms.
 This helps variant calling given reads and alignment algorithms of similar property
@@ -118,10 +117,11 @@ It is also not biased towards sequencing data types or existing alignment algori
 Suppose there are $N$ genomes including the reference genome.
 A $k$-mer is \emph{sufficiently unique}
 if 1) it has only one hit of edit distance up to $d_1$ in the reference genome
-and 2) it has $<1.01N$ hits of edit distance up to $d_2$ across all genomes, $d_2>d_1$.
-With the first condition, the $k$-mer is unlikely to be mismapped if the second best hit $d_1$-edit away.
-The second condition kicks in when the $k$-mer is unique in the reference but has extra paralogous copies in non-reference samples.
-In this case, paralogous copies would be wrongly mapped to the unique reference position and
+and 2) it has $<c\cdot N$ hits of edit distance up to $d_2$ across all genomes, $d_2>d_1$.
+$c>1$ corresponds to the tolerance with copy-number gains.
+With the first condition, the $k$-mer is unlikely to be mismapped under sequencing errors or mutations if the second best hit $d_1$-edit away.
+The second condition kicks in when the $k$-mer is unique in the reference genome but has extra paralogous copies in non-reference samples.
+In this case, the paralogous copies would be wrongly mapped to the unique reference position and
 differences between paralogous copies would be called as false variants.
 The second condition disregards the case where a $k$-mer is deleted in some genomes but duplicated in others.
 This is a weakness of our method.
@@ -135,17 +135,24 @@ though it may miss inexact hits due to heuristics.
 We sample one $k$-mer per $w$ bases from the reference genome.
 If a $k$-mer at position $i$ is not sufficiently unique, we mask interval $[i,i+k)$.
 After processing all sampled $k$-mers, the remaining regions constitute the easy regions.
-On our dataset, $N=472$ and we set $k=151$, $w=10$, $d_1=3$ and $d_2=7$.
+
+On our dataset, $N=472$.
+We use $k=151$ as 151bp reads are common nowadays.
+We set $w=10$, $c=1.01$, $d_1=3$ and $d_2=7$.
+Increasing $c$ to 1.02 adds 0.2\% of regions; increasing $d_2$ to 8 reduces 0.1\%.
+During the development of panmask, we additionally generated regions for $N=100$ and $N=398$ and with a few other settings.
+The sizes of the resulting regions are similar around 2.6Gb with larger regions being harder for variant calling.
+We also expect our current setting applicable to other species.
 
 To save missed hits due to $k$-mer sampling and alignment heuristics,
 we additionally run GenMap~\citep{Pockrandt:2020aa}, an exact algorithm though not supporting gapped alignment, with $k=151$ and maximal hamming distance 3 on the reference genome.
 We drop a $k$-mer region if GenMap finds multiple hits.
 We also filter out an easy region shorter than 50bp to reduce fragmentation.
 
-We call easy regions produced above as {\sf pm151:relaxed}, where ``pm'' stands for panmask.
+We call easy regions produced above as {\sf pm151:lenient}, where ``pm'' stands for panmask.
 As SNP and indel calling errors are enriched in low-complexity regions (LCRs; \citealp{Li:2014aa}),
 we further exclude such regions longer than 18bp with the SDUST algorithm~\citep{Morgulis:2006aa}.
-This results in {\sf pm151:strict} easy regions which are a strict subset of {\sf pm151:relaxed}.
+This results in {\sf pm151:strict} easy regions which are a strict subset of {\sf pm151:lenient}.
 
 \section{Results}
 
@@ -153,7 +160,8 @@ We collected the following easy regions:
 updated {\sf 1KG}~\citep{1000-Genomes-Project-Consortium:2010qc},
 {\sf Umap100} for 100bp single-end reads~\citep{Karimzadeh:2018aa},
 {\sf ENCODE} blacklist v2~\citep{Amemiya:2019aa},
-reproduced Illumina regions (labeled as {\sf Ilmn-easy}; ~\citealp{Aganezov:2022aa}),
+reproduced Illumina regions (labeled as {\sf Ilmn-easy}; \citealp{Aganezov:2022aa}),
+highly reproducible regions (labeled as {\sf highRepro}; \citealp{Pan:2022aa})
 and {\sf GIAB} genome stratification~\citep{Dwarshuis:2024aa}.
 Both {\sf 1KG} and {\sf GIAB} provide relaxed and strict versions.
 To the best of our knowledge, these are all the available easy regions on GRCh38.
@@ -162,7 +170,7 @@ and {\sf HG002-Q100} from GIAB's new Q100 benchmark v1.1.
 
 \begin{figure}[tb]
 \centering
-\includegraphics[width=0.9\columnwidth]{cov-dense.pdf}
+\includegraphics[width=0.9\columnwidth]{fig1.pdf}
 \caption{Properties of easy and confident regions.
 {\bf (a)} Coverage on GRCh38 chromosomal sequences.
 CDS coverage is measured with MANE-selected protein coding genes from GenCode v48.
@@ -208,7 +216,7 @@ and even when Q100 calls are wrong, their consistency with short-read calls
 still reflects the ``easiness'' of easy regions.
 
 \begin{figure*}[tb]
-\includegraphics[width=\textwidth]{merge.pdf}
+\includegraphics[width=\textwidth]{fig2.pdf}
 \caption{Small variant calling accuracy in easy and confident regions.
 {\bf (a)} SNP accuracy.
 DeepVariant, Strelka2, Octopus and GATK short-read variant calls from 30X NovaSeq data were obtained from \citet{Baid2020.12.11.422022}.
@@ -231,10 +239,10 @@ It is inadequate as easy regions.
 ENCODE blacklist is better than Umap100 but is still noticeably harder than other easy regions.
 
 1KG:strict consists of the easiest regions (Fig.~\ref{fig:ease}b and~\ref{fig:ease}c).
-It is almost a subset of pm151:relaxed with 99.3\% included in the latter.
-This overlap is higher than between 1KG:strict and Ilmn-easy (97.3\%) or GIAB:relaxed (98.6\%).
+It is almost a subset of pm151:lenient with 99.3\% included in the latter.
+This overlap is higher than between 1KG:strict and Ilmn-easy (97.3\%) or GIAB:lenient (98.6\%).
 Excluding long LCRs,
-pm151:strict greatly reduces SNP and indel calling errors in comparison to pm151:relaxed
+pm151:strict greatly reduces SNP and indel calling errors in comparison to pm151:lenient
 and achieves a reasonable balance between coverage and easiness.
 
 \section{Discussions}
@@ -242,7 +250,7 @@ and achieves a reasonable balance between coverage and easiness.
 The pm151 easy regions are used for filtering spurious variant calls in centromeres, long repeats,
 or other genomic regions where short-read mapping is likely problematic.
 These easy regions are not biased towards existing short-read data or aligners in use.
-They can be generated in two days for an arbitrary human assembly on a server with 64 CPU threads.
+Given a prebuilt ropebwt3 index, they can be generated in two days for an arbitrary human assembly on a server with 64 CPU threads, with most time spent on ropebwt3 alignment.
 The procedure can also be applied to a species with multiple well assembled genomes.
 
 Overall, no easy region set is better than the others on all metrics.

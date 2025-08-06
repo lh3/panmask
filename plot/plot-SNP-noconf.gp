@@ -34,11 +34,11 @@ set border 3
 set mytics 4
 unset xtics
 plot \
-	"<(grep DeepV 12eval.txt|egrep 'HG002|All-chr|ENCODE|Umap|relaxed|Ilmn|highR')"   u 5:xtic(4) t "DeepVariant", \
-	"<(grep Stre 12eval.txt|egrep 'HG002|All-chr|ENCODE|Umap|relaxed|Ilmn|highR')"    u 5:xtic(4) t "Strelka2", \
-	"<(grep Octopus 12eval.txt|egrep 'HG002|All-chr|ENCODE|Umap|relaxed|Ilmn|highR')" u 5:xtic(4) t "Octopus", \
-	"<(grep GATK 12eval.txt|egrep 'HG002|All-chr|ENCODE|Umap|relaxed|Ilmn|highR')"    u 5:xtic(4) t "GATK4", \
-	"<(grep Pileup 12eval.txt|egrep 'HG002|All-chr|ENCODE|Umap|relaxed|Ilmn|highR')"  u 5:xtic(4) t "pileup" ls 6
+	"<(grep DeepV 12eval.txt|egrep 'HG002|All-chr|ENCODE|Umap|lenient|Ilmn|highR')"   u 5:xtic(4) t "DeepVariant", \
+	"<(grep Stre 12eval.txt|egrep 'HG002|All-chr|ENCODE|Umap|lenient|Ilmn|highR')"    u 5:xtic(4) t "Strelka2", \
+	"<(grep Octopus 12eval.txt|egrep 'HG002|All-chr|ENCODE|Umap|lenient|Ilmn|highR')" u 5:xtic(4) t "Octopus", \
+	"<(grep GATK 12eval.txt|egrep 'HG002|All-chr|ENCODE|Umap|lenient|Ilmn|highR')"    u 5:xtic(4) t "GATK4", \
+	"<(grep Pileup 12eval.txt|egrep 'HG002|All-chr|ENCODE|Umap|lenient|Ilmn|highR')"  u 5:xtic(4) t "pileup" ls 6
 
 unset label
 
@@ -52,8 +52,8 @@ set tmargin 0
 set bmargin
 set border 2
 plot \
-	"<(grep DeepV 12eval.txt|egrep 'HG002|All-chr|ENCODE|Umap|relaxed|Ilmn|highR')"   u 6:xtic(4) not, \
-	"<(grep Stre 12eval.txt|egrep 'HG002|All-chr|ENCODE|Umap|relaxed|Ilmn|highR')"    u 6:xtic(4) not, \
-	"<(grep Octopus 12eval.txt|egrep 'HG002|All-chr|ENCODE|Umap|relaxed|Ilmn|highR')" u 6:xtic(4) not, \
-	"<(grep GATK 12eval.txt|egrep 'HG002|All-chr|ENCODE|Umap|relaxed|Ilmn|highR')"    u 6:xtic(4) not, \
-	"<(grep Pileup 12eval.txt|egrep 'HG002|All-chr|ENCODE|Umap|relaxed|Ilmn|highR')"  u 6:xtic(4) not ls 6
+	"<(grep DeepV 12eval.txt|egrep 'HG002|All-chr|ENCODE|Umap|lenient|Ilmn|highR')"   u 6:xtic(4) not, \
+	"<(grep Stre 12eval.txt|egrep 'HG002|All-chr|ENCODE|Umap|lenient|Ilmn|highR')"    u 6:xtic(4) not, \
+	"<(grep Octopus 12eval.txt|egrep 'HG002|All-chr|ENCODE|Umap|lenient|Ilmn|highR')" u 6:xtic(4) not, \
+	"<(grep GATK 12eval.txt|egrep 'HG002|All-chr|ENCODE|Umap|lenient|Ilmn|highR')"    u 6:xtic(4) not, \
+	"<(grep Pileup 12eval.txt|egrep 'HG002|All-chr|ENCODE|Umap|lenient|Ilmn|highR')"  u 6:xtic(4) not ls 6
