@@ -42,7 +42,7 @@ they fail to consider non-reference samples or are biased towards existing short
 \textbf{Results:}
 Here, using hundreds of high-quality human assemblies,
 we derived a set of sample-agnostic easy regions where short-read variant calling reaches high accuracy.
-These regions cover 87.9\% of GRCh38, 92.7\% of coding regions and 96.4\% of ClinVar pathogenic variants.
+These regions cover 88.2\% of GRCh38, 92.2\% of coding regions and 96.3\% of ClinVar pathogenic variants.
 They achieve a good balance between coverage and easiness and can be generated for other human assemblies or species with multiple well assembled genomes.
 \vspace{0.5em}\\
 \textbf{Conclusion:}
@@ -139,9 +139,9 @@ After processing all sampled $k$-mers, the remaining regions constitute the easy
 On our dataset, $N=472$.
 We use $k=151$ as 151bp reads are common nowadays.
 We set $w=10$, $c=1.01$, $d_1=3$ and $d_2=7$.
-Increasing $c$ to 1.02 adds 0.2\% of regions; increasing $d_2$ to 8 reduces 0.1\%.
-During the development of panmask, we additionally generated regions for $N=100$ and $N=398$ and with a few other settings.
-The sizes of the resulting regions are similar around 2.6Gb with larger regions being harder for variant calling.
+Increasing $c$ to 1.02 adds 0.2\% of regions; increasing $d_2$ to 8 reduces regions by 0.1\%.
+During the development of panmask, we additionally generated regions for $N=100$ and $N=398$ under a few other settings.
+We found reasonable parameters generally resulted in similar regions with slightly different balance points between region size and easiness.
 We also expect our current setting applicable to other species.
 
 To save missed hits due to $k$-mer sampling and alignment heuristics,
@@ -173,6 +173,7 @@ and {\sf HG002-Q100} from GIAB's new Q100 benchmark v1.1.
 \includegraphics[width=0.9\columnwidth]{fig1.pdf}
 \caption{Properties of easy and confident regions.
 {\bf (a)} Coverage on GRCh38 chromosomal sequences.
+The gnomAD v4.1 coverage is calculated from SNPs of allele frequency $\ge$10\% intersected with HPRC SNPs.
 CDS coverage is measured with MANE-selected protein coding genes from GenCode v48.
 ClinVar coverage is measured on pathogenic and likely pathogenic variants from ClinVar 20250623.
 {\bf (b)} Variant density relative to HG002-Q100.
@@ -195,6 +196,18 @@ CDS would tend to have lower coverage and get excluded.
 The 1KG easy regions were constructed in a similar way but with a read-depth threshold of 50\% instead of 75\%.
 They are less affected by the coverage bias.
 GIAB:strict excludes regions of extreme GC and is also biased against CDS.
+
+To measure the coverage of SNP catalogs, we acquired SNPs of allele frequency of $\ge$10\% from gnomAD v4.1~\citep{Karczewski:2020aa}.
+There are 5.85 million SNPs that have passed the gnomAD filters.
+96.9\% of them are also called from 462 HPRC assemblies.
+They are likely to be correct.
+pm151 missed $\sim$10\% of these common SNPs (Fig.~\ref{fig:cov}a).
+This suggests that taking full advantage of input data,
+sophisticated SNP calling pipelines still have more power over easy regions.
+On the other hand, we see a sharp difference in the fraction of gnomAD-filtered SNPs:
+only 1.2\% of candidate SNPs inside pm151:strict are filtered by gnomAD,
+but the percentage rises to 16.6\% for candidate SNPs outside pm151:strict.
+gnomAD also thinks SNPs outside easy regions are harder to call.
 
 We next compared the SNP and indel density using the GIAB Q100 callset.
 This callset was generated from the near complete assembly of HG002~\citep{Rautiainen:2023ab}.
@@ -260,6 +273,11 @@ we discourage the use of ENCODE and Umap100 as they are too permissive
 and are not effective for variant filtering.
 1KG and pm151 are the better choices
 though the 1KG set is only available to GRCh38.
+
+We also caution that although easy regions provide a convenient way to identify high-quality variant calls,
+they are conservative due to their generality.
+They do not fully replace other variant filtering strategies.
+Sophisticated variant calling pipelines optimized for input data and the best aligners and callers can achieve higher power and call more SNPs to high accuracy.
 
 \section*{Acknowledgments}
 

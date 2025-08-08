@@ -23,6 +23,7 @@ set lmargin 8
 set border 2
 plot \
 	"<grep -v ens 13cov.txt" u (100-$2/2923717335*100):xtic(1) t "GRCh38 non-gap", \
+	""          u (100-$7/5672139*100):xtic(1) t "gnomAD SNPs (AF{/Symbol \263}10%)", \
 	""          u (100-$3/33797803*100):xtic(1) t "GenCode CDS", \
 	""          u (100-$4/308259*100):xtic(1) t "ClinVar pathogenic"
 

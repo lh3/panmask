@@ -28,11 +28,11 @@
 3	6	Octopus	1KG:lenient	1.52	1.56	1.81	4.53	19.976	5.870
 4	6	GATK	1KG:lenient	2.44	1.54	2.16	5.87	32.625	6.744
 5	6	Pileup	1KG:lenient	2.15	2.02	1.74	16.59	28.567	4.559
-1	7	DeepVariant	pm151:strict	0.44	0.46	0.78	2.85	5.670	1.467
-2	7	Strelka2	pm151:strict	0.57	0.83	1.15	4.29	7.216	2.102
-3	7	Octopus	pm151:strict	0.79	0.53	1.24	2.60	10.103	2.390
-4	7	GATK	pm151:strict	1.32	0.55	1.90	2.83	17.029	3.621
-5	7	Pileup	pm151:strict	1.50	0.89	1.02	8.64	19.388	1.760
+1	7	DeepVariant	pm151:strict	0.36	0.34	0.64	2.14	4.655	1.331
+2	7	Strelka2	pm151:strict	0.47	0.72	0.84	3.58	5.954	1.699
+3	7	Octopus	pm151:strict	0.67	0.43	1.00	2.09	8.604	2.143
+4	7	GATK	pm151:strict	1.06	0.40	1.53	2.25	13.620	3.236
+5	7	Pileup	pm151:strict	1.05	0.81	0.78	8.21	13.522	1.482
 1	8	DeepVariant	pm151:lenient	0.57	1.08	1.37	6.00	7.382	4.641
 2	8	Strelka2	pm151:lenient	0.72	1.77	1.67	12.14	9.309	5.222
 3	8	Octopus	pm151:lenient	0.91	1.16	2.08	6.12	11.679	7.295
