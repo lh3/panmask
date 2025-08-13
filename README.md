@@ -49,7 +49,8 @@ Other datasets used for evaluation:
 
 Short-read [small variant calls][varcall], published in [Baid et al (2020)][pub-varcall].
 Only VCFs called from HG002 PCR-free NovaSeq data at 30X are used.
-Data files in this repo are under CC0.
+Data files in this repo are released under CC0 and will be [available at GigaDB][gigadb].
 
 [varcall]: https://console.cloud.google.com/storage/browser/brain-genomics-public/research/sequencing/grch38/vcf/novaseq/wgs_pcr_free/30x
 [pub-varcall]: https://www.biorxiv.org/content/10.1101/2020.12.11.422022v1
+[gigadb]: https://doi.org/10.5524/102750
