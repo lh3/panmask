@@ -41,8 +41,8 @@ HG002 confident regions (where small variant calls can be trusted):
 
 Other datasets used for evaluation:
 
-* ClinVar, [20250209][clinvar-dw]
-* GenCode basic gene annotation, [v47][gencode-gtp]
+* ClinVar, [20250623][clinvar-dw]
+* GenCode basic gene annotation, [v48][gencode-gtp]
 
 [clinvar-dw]: https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/archive_2.0/2025/
 [gencode-gtp]: https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_47/
