@@ -43,6 +43,7 @@ Other datasets used for evaluation:
 
 * ClinVar, [20250623][clinvar-dw]
 * GenCode basic gene annotation, [v48][gencode-gtp]
+* gnomAD, [v4.1.0][gnomad]
 
 [clinvar-dw]: https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/archive_2.0/2025/
 [gencode-gtp]: https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_47/
@@ -54,3 +55,4 @@ Data files in this repo are released under CC0 and will be [available at GigaDB]
 [varcall]: https://console.cloud.google.com/storage/browser/brain-genomics-public/research/sequencing/grch38/vcf/novaseq/wgs_pcr_free/30x
 [pub-varcall]: https://www.biorxiv.org/content/10.1101/2020.12.11.422022v1
 [gigadb]: https://doi.org/10.5524/102750
+[gnomad]: https://gnomad.broadinstitute.org
