@@ -51,5 +51,5 @@ Short-read [small variant calls][varcall], published in [Baid et al (2020)][pub-
 Only VCFs called from HG002 PCR-free NovaSeq data at 30X are used.
 Data files in this repo are under CC0.
 
-[varcall]: https://console.cloud.google.com/storage/browser/brain-genomics-public/research/sequencing/grch38/vcf/novaseq/wgs_pcr_free/50x
+[varcall]: https://console.cloud.google.com/storage/browser/brain-genomics-public/research/sequencing/grch38/vcf/novaseq/wgs_pcr_free/30x
 [pub-varcall]: https://www.biorxiv.org/content/10.1101/2020.12.11.422022v1
