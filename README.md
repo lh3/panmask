@@ -46,7 +46,7 @@ Other datasets used for evaluation:
 * gnomAD, [v4.1.0][gnomad]
 
 [clinvar-dw]: https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/archive_2.0/2025/
-[gencode-gtp]: https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_47/
+[gencode-gtp]: https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_48/
 
 Short-read [small variant calls][varcall], published in [Baid et al (2020)][pub-varcall].
 Only VCFs called from HG002 PCR-free NovaSeq data at 30X are used.
